@@ -1,6 +1,8 @@
 package _04_Directory_Iteration;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.JFileChooser;
 
@@ -18,8 +20,22 @@ public class DirectoryIterator {
 			File[] files = directory.listFiles();
 			if(files != null) {
 				for(File f : files) {
-				  System.out.println(f.getAbsolutePath());
+				  if(f.getAbsolutePath().endsWith(".java")) {
+					  System.out.println(f.getAbsolutePath());
+					  try {
+							FileWriter fw = new FileWriter(f.getAbsolutePath(), true);
+							
+							fw.write("//Copyright © 2021 Ryan O'Donnell");
+								
+							fw.close();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+				  }
 				}
+				
+					
+				
 			}
 		}
 		
@@ -31,3 +47,7 @@ public class DirectoryIterator {
 		 */
 	}
 }
+
+//C:\Users\rpodo\git\level5-01-file-io-ryanodonnell2\src\_04_Directory_Iteration
+
+//Copyright © 2021 Ryan O'Donnell
